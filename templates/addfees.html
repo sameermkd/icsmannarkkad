@@ -1,0 +1,49 @@
+{% extends 'theme.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card" style="margin-top: 50px;">
+  <div class="card-header">
+    <h5 class="card-title">Add Student Fees Details</h5>
+  </div>
+  <div class="card-content">
+    <div class="card-header">
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group  w-50">
+          <label for="usr">Invoice No</label>
+          <input type="text" class="form-control" id="usr" name="invoiceno" oninput="showCustomer(this.value)">
+        </div>
+        <div id="txtHint"></div>
+          <div class="form-group  w-50">
+            <label for="usr">Fees</label>
+            <input type="text" class="form-control" id="usr" name="fees">
+        </div>
+        <div class="form-group  w-50">
+            <label for="usr">Due Date</label>
+            <input type="date" class="form-control" id="usr" name="duedate">
+        </div>
+        <div class="form-group  w-25">
+          <button type="submit" class="btn btn-success mt-2">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+    function showCustomer(str) {
+      if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+      }
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "/getstudent?invoiceno="+str);
+      xhttp.send();
+    }
+    
+    </script>
+{% endblock %}

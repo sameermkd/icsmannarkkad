@@ -1,0 +1,48 @@
+<div class="card" style="margin-top: 50px;">
+    <div class="card-header">
+        <h5 class="card-title">Student Datails</h5>
+    </div>
+    <div class="card-content">
+    <div class="card-footer">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Invoice No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Phone 1</th>
+                    <th scope="col">Phone 2</th>
+                    <th scope="col">BSD</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in student1 %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{a.invoiceno}}</td>
+                    <td>{{a.name}}</td>
+                    <td>{{a.course}}</td>
+                    <td>{{a.phone1}}</td>
+                    <td>{{a.phone2}}</td>
+                    <td>{{a.bsd}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tbody>
+                {% for a in student2 %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{a.invoiceno}}</td>
+                    <td>{{a.name}}</td>
+                    <td>{{a.course}}</td>
+                    <td>{{a.phone1}}</td>
+                    <td>{{a.phone2}}</td>
+                    <td>{{a.bsd}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+{% extends 'theme.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="row my-4">
+    <div class="col-12 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="usr">Enter Invoice No:</label>
+                        <input type="text" class="form-control" id="usr" name="invoiceno" placeholder="Invoice No" oninput="showCustomer(this.value)">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="usr">Select Batch:</label>
+                        <select name="customers" class="form-control" name="data1" onchange="showCustomer1(this.value)">
+                        <option value="">Select a Batch</option>
+                        <option value="09">09.00 to 10.30</option>
+                        <option value="1030">10.30 to 12.00</option>
+                        <option value="12">12.00 to 01.30</option>
+                        <option value="02">02.00 to 03.30</option>
+                        <option value="330">03.30 to 05.00</option>
+                        <option value="saturday">Saturday</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="usr">Course:</label>
+                        <select class="form-control" id="usr" name="data2" onchange="showCustomer2(this.value)">
+                            <option value="">Select Course</option>
+                            {% for a in course %}
+                            <option value="{{a.course}}">{{a.course}}</option>
+                            {% endfor %}
+                            </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="txtHint"></div>
+</div>
+<script>
+    function showCustomer(str) {
+      if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+      }
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "/getstart?invoiceno="+str);
+      xhttp.send();
+    }
+    function showCustomer1(str) {
+      if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+      }
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "/getbatch?data1="+str);
+      xhttp.send();
+    }
+    function showCustomer2(str) {
+      if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+      }
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "/getbatch?data2="+str);
+      xhttp.send();
+    }
+    </script>
+
+{% endblock %}

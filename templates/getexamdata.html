@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <title>ICS India Mannarkkad</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card" style="margin-top: 50px;">
+            <div class="card-header">
+                <h5 class="card-title">Student Exam Details</h5>
+            </div>
+            <div class="card-body">
+                <h4>Name : {{data1.name}}</h4>
+                <b>Invoice No : {{data1.invoiceno}}</b>
+                <br>
+                <b>Course : {{data1.course}}</b>
+                <br>
+                <b>Phone : {{data1.phone}}</b>
+            </div>
+        </div>
+        <div class="card" style="margin-top: 50px;">
+            <div class="card-header">
+                <h5 class="card-title">Student Exam Details</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">Module</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Exam Link</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for a in data %}
+                      <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{a.course}}</td>
+                        <td>{{a.examid}}</td>
+                        <td>{{a.dateofexam}}</td>
+                        <td>{{a.examtime}}</td>
+                        <td><a href="{{a.examlink}}" target="_blank"><button class="btn btn-success">Start Exam</button></a></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

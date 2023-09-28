@@ -1,0 +1,42 @@
+{% extends '../theme.html' %}
+{% block content %}
+<div class="row my-4">
+    <h1>PC LIST</h1>
+    <div class="col-12 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="usr">Select Batch:</label>
+                        <select name="batch" class="form-control" onchange="showCustomer(this.value)">
+                            <option value="">Select a Batch</option>
+                            <option value="09">09.00 to 10.30</option>
+                            <option value="1030">10.30 to 12.00</option>
+                            <option value="12">12.00 to 01.30</option>
+                            <option value="02">02.00 to 03.30</option>
+                            <option value="330">03.30 to 05.00</option>
+                            <option value="saturday">Saturday</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="txtHint"></div>
+<script>
+    function showCustomer(str) {
+      if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+      }
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "/systems/getdata?batch="+str);
+      xhttp.send();
+    }
+    </script>
+{% endblock %}

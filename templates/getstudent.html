@@ -1,0 +1,22 @@
+<html>
+    {% for a in data %}
+    <div class="form-group  w-50">
+        <label for="usr">Student Name</label>
+        <input type="text" class="form-control" id="usr" name="name" value="{{a.name}}">
+    </div>
+    <div class="form-group  w-50">
+        <label for="usr">Course Name</label>
+        <input type="text" class="form-control" id="usr" name="course" value="{{a.course}}">
+    </div>
+    <div class="form-group  w-50">
+        <label for="usr">Batch Time</label>
+        <input type="text" class="form-control" id="usr" name="batchtime" value="{{a.batchtime}}">
+    </div>
+    <div class="form-group  w-50">
+        <input type="hidden" class="form-control" id="usr" name="phone" value="{{a.phone1}}">
+    </div>
+    <div class="form-group  w-50">
+        <input type="hidden" class="form-control" id="usr" name="bsd" value="{{a.bsd}}">
+    </div>
+    {% endfor %}
+    </html>

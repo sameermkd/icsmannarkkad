@@ -1,0 +1,72 @@
+{% extends 'theme.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card" style="margin-top: 50px;">
+  <div class="card-header">
+    <h5 class="card-title">Add Student to Exam</h5>
+  </div>
+  <div class="card-content">
+    <div class="card-header">
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group  w-50">
+          <label for="usr">Invoice No</label>
+          <input type="text" class="form-control" id="usr" name="invoiceno" oninput="showCustomer(this.value)">
+        </div>
+        <div id="txtHint"></div>
+        <div class="form-group  w-50">
+            <label for="usr">Exam ID</label>
+            <select class="form-control" id="usr" name="examid" onchange="showCustomer1(this.value)">
+            <option value="">Select one..</option>
+            {% for a in exam %}
+            <option value="{{a.examid}}">{{a.examid}}</option>
+            {% endfor %}
+            </select>
+          </div>
+          <div id="txtHint1"></div>
+          <div class="form-group  w-50">
+            <label for="usr">Select Exam Date</label>
+            <input type="date" class="form-control" id="usr" name="examdate">
+        </div>
+        <div class="form-group  w-50">
+            <label for="usr">Select Exam Time</label>
+            <input type="time" class="form-control" id="usr" name="examtime">
+        </div>
+        <div class="form-group  w-25">
+          <button type="submit" class="btn btn-success mt-2">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card-footer">
+  </div>
+</div>
+
+<script>
+    function showCustomer(str) {
+      if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+      }
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "getstudent?invoiceno="+str);
+      xhttp.send();
+    }
+    function showCustomer1(str) {
+      if (str == "") {
+        document.getElementById("txtHint1").innerHTML = "";
+        return;
+      }
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("txtHint1").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "getexamid?examid="+str);
+      xhttp.send();
+    }
+    </script>
+{% endblock %}

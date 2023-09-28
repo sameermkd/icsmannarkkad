@@ -1,0 +1,65 @@
+<div class="row">
+<div class="col-12 col-md-12 my-3">
+    <div class="card">
+        <h5 class="card-header">Student Details</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{student.name}}</h5>
+            <p class="card-text">{{student.phone1}} | {{student.phone2}}</p>
+            <p class="card-text">Place : {{student.place}}</p>
+        </div>
+    </div>
+</div>
+<div class="col-12 col-md-6 my-3">
+    <div class="card">
+        <h5 class="card-header">Course Details</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{student.course}}</h5>
+            <p class="card-text">Invoice No: {{student.invoiceno}}</p>
+            <p class="card-text">Batch Time : {{student.batchtime}}</p>
+            <p class="card-text">Batch Starting Date : {{student.bsd}}</p>
+            <p class="card-text">Batch Ending Date : {{student.bed}}</p>
+            <p class="card-text">Status : {{student.status}}</p>
+        </div>
+    </div>
+</div>
+<div class="col-12 col-md-6 my-3">
+    <div class="card">
+        <h5 class="card-header">Attendence Details</h5>
+        <div class="card-body">
+            <!-- <h5 class="card-title">$2.4k</h5>
+            <p class="card-text">Feb 1 - Apr 1, United States</p>
+            <p class="card-text text-success">4.6% increase since last month</p> -->
+        </div>
+    </div>
+</div>
+<div class="col-12 col-md-12 my-3">
+    <div class="card">
+        <h5 class="card-header">Class Deatails</h5>
+        <div class="card-body">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Invoice No</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col" class="w-50">Content</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in data %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{a.invoiceno}}</td>
+                        <td>{{a.date}}</td>
+                        <td>{{a.subject}}</td>
+                        <td>{{a.report}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <title>ICS India Mannarkkad</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card" style="margin-top: 50px;">
+            <div class="card-header">
+                <h5 class="card-title">Exam List</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Invoice No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">Exam ID</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Phone</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for a in list %}
+                      <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{a.invoiceno}}</td>
+                        <td>{{a.name}}</td>
+                        <td>{{a.course}}</td>
+                        <td>{{a.examid}}</td>
+                        <td>{{a.examtime}}</td>
+                        <td>{{a.phone}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

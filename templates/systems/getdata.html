@@ -1,0 +1,16 @@
+<div class="row my-2">
+    {% for a in data %}
+    <div class="col-3 col-md-3">
+    <div class="card text-white bg-{{a.status}} mb-3" style="max-width: 18rem; margin-right: 10px;">
+        <div class="card-header">PC No :{{a.pc}}</div>
+        <div class="card-body">
+            <h5 class="card-title">Name :{{a.name}}</h5>
+            <p class="card-text">
+                BSD : {{a.bsd}} <br>
+                EBED: {{a.ebed}}
+            </p>
+        </div>
+    </div>
+</div>
+    {% endfor %}
+</div>

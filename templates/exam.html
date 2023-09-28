@@ -1,0 +1,22 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<title>ICS India Mannarkkad</title>
+<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<div class="container">
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card px-5 py-5 text-center" id="form1">
+                    <form action="getexamdata" method="get">
+                        <div class="form-group">
+                            <label for="usr">Enter Invoice No:</label>
+                            <input type="text" class="form-control" id="usr" name="invoiceno" placeholder="Invoice No">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success mt-2">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>
