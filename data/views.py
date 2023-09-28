@@ -39,9 +39,10 @@ def getstart(request):
         }
     return render(request, "getstart.html",context)
 def getbatch(request):
+    exclude=["complete","drop","break"]
     if 'data1' in request.GET:
         batchtime=request.GET['data1']
-        student1=Student.objects.filter(batchtime=batchtime).exclude(staus="complete")
+        student1=Student.objects.filter(batchtime=batchtime).exclude(staus__in=exclude)
         context = {
             "student1":student1,
         }
