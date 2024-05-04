@@ -1,0 +1,40 @@
+{% extends '../theme.html' %}
+{% block content %}
+<div class="row my-4">
+    <h1>Generate Attendance Sheet</h1>
+    <div class="col-12 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="usr">Select Date:</label>
+                        <input type="date" name="date" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">Generate</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row my-1">
+        <div class="col-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Leave Student Datails</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <textarea class="form-control" cols="20" rows="20">
+                            {% for a in student %}
+                            {{a.name}} {{a.mob1}}, {{a.mob2}}
+                            {% endfor %} 
+                        </textarea>
+                    </div> 
+                </div>
+            </div>
+        </div>
+</div>
+<script>
+$('textarea').val($('textarea').val().trim())
+</script>
+{% endblock %}

@@ -1,0 +1,19 @@
+<table class="table">
+    {% for a in student %}
+    <input type="hidden" name="name" value="{{a.name}}">
+    <input type="hidden" name="invoiceno" value="{{a.invoiceno}}">
+    <input type="hidden" name="course" value="{{a.course}}">
+    <input type="hidden" name="mob1" value="{{a.phone1}}">
+    <input type="hidden" name="mob2" value="{{a.phone2}}">
+    <div class="form-group">
+        <tr>
+            <th>{{a.name}}
+            <th>
+            <th>{{a.course}}</th>
+            <th>Present : <input type="checkbox" name="attendence" value="present" checked></th>
+            <th>Leave : <input type="checkbox" name="attendence" value="leave"></th>
+            <th>Informed : <input type="checkbox" name="attendence" value="informed"></th>
+        </tr>
+    </div>
+{% endfor %}
+</table>
