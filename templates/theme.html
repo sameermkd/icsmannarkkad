@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
+    <link rel="shortcut icon" href="{% static 'image/logo.jpg' %}" type="image/x-icon">
     <title>ICS India Mannarkkad</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
@@ -15,7 +16,7 @@
     
 
     <!-- Bootstrap core CSS -->
-<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -109,7 +110,14 @@
             <li><a href="/exam/addstudent" class="link-dark rounded">Add Student to Exam</a></li>
             <li><a href="/exam/examlist" class="link-dark rounded">Exam List</a></li>
             <li><a href="/systems" class="link-dark rounded">PC List</a></li>
-            <li><a href="#" class="link-dark rounded">Sign out</a></li>
+            <li><a href="#" class="link-dark rounded">
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" style="border: none; background-color: white;">
+                  Sign out
+                </button>
+              </form>
+            </a></li>
           </ul>
         </div>
       </li>
@@ -124,7 +132,6 @@
   </main>
   
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-      <script src="{% static 'bootstrap/js/sidebars.js' %}"></script>
+    <script src="{% static 'bootstrap/js/sidebars.js' %}"></script>
   </body>
 </html>

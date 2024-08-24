@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseNotFound
 from django.contrib import messages
 from .forms import DataForm
 from .models import Fees, Student, Data, Course
@@ -31,13 +32,20 @@ def start(request):
     return render(request, "start.html",context)
 def getstart(request):
     invoiceno=request.GET['invoiceno']
-    student=Student.objects.get(invoiceno=invoiceno.upper())
-    data=Data.objects.filter(invoiceno=invoiceno.upper())
-    context = {
-        'student':student,
-        'data':data
-        }
-    return render(request, "getstart.html",context)
+    print(len(invoiceno))
+    if len(invoiceno)>=5:
+        try:
+            student=Student.objects.get(invoiceno=invoiceno.upper())
+            data=Data.objects.filter(invoiceno=invoiceno.upper())
+            context = {
+                'student':student,
+                'data':data
+                }
+            return render(request, "getstart.html",context)
+        except:
+            return  HttpResponseNotFound("Invoice not Found, Please check the invoice number and try again")
+        
+    return HttpResponse("Enter full Invoice number (Exampe :A0000)")
 def getbatch(request):
     exclude=["complete","drop","break"]
     if 'data1' in request.GET:
